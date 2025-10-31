@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trading Dashboard (Simulated)</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+<header class="site-header">
+    <h1>Trading Dashboard (Simulated)</h1>
+    <form id="add-stock-form" class="add-stock-form">
+        <label for="symbol">Add symbol</label>
+        <input id="symbol" name="symbol" type="text" placeholder="AAPL" required />
+        <button type="submit">Add</button>
+    </form>
+</header>
+
+<main class="container">
+    <section id="watchlist" class="watchlist">
+        <h2>Your Watchlist</h2>
+        <div id="stock-container" class="stock-grid" aria-live="polite"></div>
+        <div id="empty" class="empty">Your watchlist is empty. Add a symbol above.</div>
+    </section>
+
+    <aside class="panel">
+        <h3>Controls</h3>
+        <button id="refresh-all">Refresh all</button>
+        <button id="clear-watchlist">Clear watchlist</button>
+    </aside>
+</main>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

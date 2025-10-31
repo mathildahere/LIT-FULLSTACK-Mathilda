@@ -1,0 +1,14 @@
+{
+  "name": "quiz-13-openai-clone",
+  "version": "1.0.0",
+  "description": "OpenAI Landing Page Clone - HTML, CSS, JS Challenge",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve public",
+    "test": "echo 'Open index.html in your browser to test' && exit 0",
+    "test:solution": "echo 'Open index.solution.html to view solution' && exit 0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}

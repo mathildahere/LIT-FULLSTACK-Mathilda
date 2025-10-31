@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenAI - Clone Challenge</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- TODO: Build the OpenAI landing page structure -->
+  <!-- This is your starting point - add HTML elements here -->
+
+  <!-- Header -->
+  <header class="header" role="banner">
+      <button class="sidebar-toggle" aria-label="Toggle menu">☰</button>
+      <div class="header-inner">
+          <div class="logo" aria-hidden="true">OpenAI</div>
+          <div class="header-actions">
+              <div>🔎︎</div>
+              <button class="btn login-btn">Log in</button>
+          </div>
+      </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <nav class="sidebar-nav">
+          <a class="sidebar-link">Research</a>
+          <a class="sidebar-link">Safety</a>
+          <a class="sidebar-link">For business</a>
+          <a class="sidebar-link">For developers</a>
+          <a class="sidebar-link">ChatGPT</a>
+          <a class="sidebar-link">Sora</a>
+          <a class="sidebar-link">Stories</a>
+          <a class="sidebar-link">Company</a>
+          <a class="sidebar-link">News</a>
+      </nav>
+  </aside>
+
+  <!-- Page content -->
+  <main class="page">
+      <!-- HERO -->
+      <section class="hero" id="home" aria-labelledby="hero-title">
+          <button class="btn btn-secondary close-btn">Close</button>
+          <div class="hero-gradient" aria-hidden="true"></div>
+
+          <div class="hero-content">
+
+              <h1 id="hero-title" class="hero-title">The OpenAI Foundation</h1>
+              <p class="hero-description">
+                  One of the best resourced philanthropies in the world.<br>
+                  Join the livestream at 10:30am PST.
+              </p>
+
+              <div class="hero-buttons">
+                  <button class="btn btn-primary">Learn more</button>
+                  <button class="btn btn-secondary">Watch livestream ></button>
+              </div>
+          </div>
+      </section>
+
+      <!-- Featured / Large article area -->
+      <section id="featured" class="section featured">
+          <div class="featured-grid">
+              <article class="featured card">
+                  <div class="media hero-card-media"></div>
+                  <div class="card-body">
+                      <h2>Introducing ChatGPT Atlas, the browser with ChatGPT built in</h2>
+                      <p class="muted">Product • 7 min read</p>
+                  </div>
+              </article>
+
+              <aside class="featured-card">
+                  <article class="mini-card card">
+                      <div class="media small-media"></div>
+                      <div class="card-body">
+                          <h3>Sora 2 is here</h3>
+                          <p class="muted">Research • 8 min read</p>
+                      </div>
+                  </article>
+
+                  <article class="mini-card card">
+                      <div class="media small-media alt"></div>
+                      <div class="card-body">
+                          <h3>OpenAI DevDay 2025</h3>
+                          <p class="muted">Company • 8 min read</p>
+                      </div>
+                  </article>
+
+                  <article class="mini-card card">
+                      <div class="media small-media alt"></div>
+                      <div class="card-body">
+                          <h3>Work smarter with your company knowledge in ChatGPT</h3>
+                          <p class="muted">Product • 8 min read</p>
+                      </div>
+                  </article>
+              </aside>
+          </div>
+      </section>
+
+      <!-- Latest news grid -->
+      <section id="news" class="section news">
+          <div class="section-header">
+              <h2 class="section-title">Latest news</h2>
+              <button class="btn btn-secondary small-btn">View all</button>
+          </div>
+
+          <div class="news-grid">
+              <article class="news-card card">
+                  <div class="media news-media"></div>
+                  <div class="card-body">
+                      <h3>The next chapter of the Microsoft-OpenAI partnership</h3>
+                      <p class="muted">Company • Oct 28, 2025</p>
+                  </div>
+              </article>
+
+              <article class="news-card card">
+                  <div class="media news-media"></div>
+                  <div class="card-body">
+                      <h3>Strengthening ChatGPT's responses in sensitive conversations</h3>
+                      <p class="muted">Safety • Oct 27, 2025</p>
+                  </div>
+              </article>
+
+              <article class="news-card card">
+                  <div class="media news-media"></div>
+                  <div class="card-body">
+                      <h3>OpenAI acquires Software Applications Incorporated, maker of Sky</h3>
+                      <p class="muted">Company • Oct 23, 2025</p>
+                  </div>
+              </article>
+
+              <article class="news-card card">
+                  <div class="media news-media"></div>
+                  <div class="card-body">
+                      <h3>Expert Council on Well-Being and AI</h3>
+                      <p class="muted">Company • Oct 14, 2025</p>
+                  </div>
+              </article>
+
+              <article class="news-card card">
+                  <div class="media news-media"></div>
+                  <div class="card-body">
+                      <h3>OpenAI and Broadcom announce strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators</h3>
+                      <p class="muted">Company • Oct 13, 2025</p>
+                  </div>
+              </article>
+
+              <article class="news-card card">
+                  <div class="media news-media"></div>
+                  <div class="card-body">
+                      <h3>Defining and evaluating political bias in LLMs</h3>
+                      <p class="muted">Research • Oct 9, 2025</p>
+                  </div>
+              </article>
+          </div>
+      </section>
+
+      <!-- Stories -->
+      <section class="section stories">
+          <div class="section-header">
+              <h2 class="section-title">Stories</h2>
+              <button class="btn btn-secondary small-btn">View all</button>
+          </div>
+          <div class="stories-grid">
+              <article class="story card">
+                  <div class="media story-media"></div>
+                  <div class="card-body">
+                      <h3>Coding and design with GPT-5</h3>
+                      <p class="muted">GPT5 Aug 7, 2025 2 min read</p>
+                  </div>
+              </article>
+
+              <article class="story card">
+                  <div class="media story-media"></div>
+                  <div class="card-body">
+                      <h3>Creative writing with GPT-5</h3>
+                      <p class="muted">GPT5 Aug 7, 2025 2 min read</p>
+                  </div>
+              </article>
+
+              <article class="story card">
+                  <div class="media story-media"></div>
+                  <div class="card-body">
+                      <h3>Medical research with GPT-5</h3>
+                      <p class="muted">GPT5 Aug 7, 2025 2 min read</p>
+                  </div>
+              </article>
+          </div>
+      </section>
+
+      <!-- Research -->
+      <section class="section research">
+          <div class="section-header">
+              <h2 class="section-title">Latest Research</h2>
+              <button class="btn btn-secondary small-btn">View all</button>
+          </div>
+          <div class="stories-grid">
+              <article class="story card">
+                  <div class="media story-media"></div>
+                  <div class="card-body">
+                      <h3>Measuring the performance of our models on real-world tasks</h3>
+                      <p class="muted">Publication • Sep 25, 2025</p>
+                  </div>
+              </article>
+
+              <article class="story card">
+                  <div class="media story-media"></div>
+                  <div class="card-body">
+                      <h3>Detecting and reducing scheming in AI models</h3>
+                      <p class="muted">Publication • Sep 17, 2025</p>
+                  </div>
+              </article>
+          </div>
+      </section>
+
+      <!-- Business -->
+      <section class="section business">
+          <div class="section-header">
+              <h2 class="section-title">OpenAI for business</h2>
+              <button class="btn btn-secondary small-btn">View all</button>
+          </div>
+          <div class="stories-grid">
+              <article class="story card">
+                  <div class="media story-media"></div>
+                  <div class="card-body">
+                      <h3>Doppel's AI defense systems stop attacks before they spread</h3>
+                      <p class="muted">API</p>
+                  </div>
+              </article>
+
+              <article class="story card">
+                  <div class="media story-media"></div>
+                  <div class="card-body">
+                      <h3>A law and tax firm redefines efficiency with ChatGPT Business</h3>
+                      <p class="muted">ChatGPT</p>
+                  </div>
+              </article>
+
+              <article class="story card">
+                  <div class="media story-media"></div>
+                  <div class="card-body">
+                      <h3>Consensus accelerates research with GPT-5 and Responses API</h3>
+                      <p class="muted">APPI</p>
+                  </div>
+              </article>
+          </div>
+      </section>
+
+      <!-- Call to action band -->
+      <section class="cta-band">
+          <div class="cta-inner">
+              <h3>Get started with ChatGPT</h3>
+              <button class="btn btn-secondary">Download</button>
+          </div>
+      </section>
+
+      <!-- FOOTER (full columns) -->
+      <footer class="footer" role="contentinfo">
+          <div class="footer-top">
+              <div class="footer-content">
+                  <div class="footer-col">
+                      <h4>Our Research</h4>
+                      <a href="">Research Index</a>
+                      <a href="">Research Overview</a>
+                      <a href="">Research Residency</a>
+                  </div>
+
+                  <div class="footer-col">
+                      <h4>ChatGPT</h4>
+                      <a href="">Explore ChatGPT ⤴</a>
+                      <a href="">Business</a>
+                      <a href="">Enterprise</a>
+                      <a href="">Education</a>
+                      <a href="">Pricing ⤴</a>
+                      <a href="">Download ⤴</a>
+                  </div>
+
+                  <div class="footer-col">
+                      <h4>For Business</h4>
+                      <a href="">Business Overview</a>
+                      <a href="">Solutions</a>
+                      <a href="">Contact Sales</a>
+                  </div>
+
+                  <div class="footer-col">
+                      <h4>Terms & Policies</h4>
+                      <a href="">Terms of Use</a>
+                      <a href="">Privacy Policy</a>
+                      <a href="">Other Policies</a>
+                  </div>
+
+                  <div class="footer-col">
+                      <h4>Latest Advancements</h4>
+                      <a href="">GPT-5</a>
+                      <a href="">OpenAI o3</a>
+                      <a href="">OpenAI o4-mini</a>
+                      <a href="">GPT-4o</a>
+                      <a href="">GPT-4o mini</a>
+                      <a href="">Sora</a>
+                  </div>
+
+                  <div class="footer-col">
+                      <h4>Sora</h4>
+                      <a href="">Sora Overview</a>
+                      <a href="">Features</a>
+                      <a href="">Pricing</a>
+                      <a href="">Sora log in ⤴</a>
+                  </div>
+
+                  <div class="footer-col">
+                      <h4>Company</h4>
+                      <a href="">About Us</a>
+                      <a href="">Our Charter</a>
+                      <a href="">Foundation</a>
+                      <a href="">Careers</a>
+                      <a href="">Brand</a>
+                  </div>
+
+                  <div class="footer-col">
+                      <h4>Safety</h4>
+                      <a href="">Safety Approach</a>
+                      <a href="">Security & Privacy</a>
+                      <a href="">Trust & Transparency</a>
+                  </div>
+
+                  <div class="footer-col">
+                      <h4>API Platform</h4>
+                      <a href="">Platform Overview</a>
+                      <a href="">Pricing</a>
+                      <a href="">API log in ⤴</a>
+                      <a href="">Documentation ⤴</a>
+                      <a href="">Developer Forum ⤴</a>
+                  </div>
+
+                  <div class="footer-col">
+                      <h4>Support</h4>
+                  </div>
+
+                  <div class="footer-col">
+                      <h4>More</h4>
+                      <a href="">News</a>
+                      <a href="">Stories</a>
+                      <a href="">Livestreams</a>
+                      <a href="">Podcast</a>
+                  </div>
+              </div>
+          </div>
+
+          <div class="footer-bottom">
+              <div>
+                  <a href="" aria-label="Twitter">𝕏</a>
+                  <a href="" aria-label="YouTube">▶</a>
+                  <a href="" aria-label="LinkedIn">[in]</a>
+                  <a href="" aria-label="Github">< / ></a>
+                  <a href="" aria-label="Instagram">🅾</a>
+                  <a href="" aria-label="Tiktok">♪</a>
+                  <a href="" aria-label="Discord">D</a>
+              </div>
+              <a href="">OpenAI (Clone) © 2015-2025 Manage Cookies</a>
+              <div>Indonesia</div>
+          </div>
+      </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

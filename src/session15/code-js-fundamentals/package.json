@@ -1,0 +1,13 @@
+{
+  "name": "js-fundamentals-quizzes",
+  "version": "1.0.0",
+  "description": "JavaScript Fundamentals - TDD Quizzes",
+  "scripts": {
+    "test": "pnpm -r test",
+    "install-all": "pnpm -r install"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "cross-env": "^7.0.3"
+  }
+}
