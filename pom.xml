@@ -16,5 +16,6 @@
         <module>session17/assignment-02-crud-operations</module>
         <module>session17/assignment-03-prepared-statement</module>
         <module>session17/assignment-04-transactions</module>
+        <module>session17/assignment-05-connection-pooling</module>
     </modules>
 </project>
