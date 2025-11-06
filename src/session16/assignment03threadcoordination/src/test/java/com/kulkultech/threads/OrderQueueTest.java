@@ -1,4 +1,4 @@
-package session16.assignment;
+package session16.assignment03threadcoordination.src.test.java.com.kulkultech.threads;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

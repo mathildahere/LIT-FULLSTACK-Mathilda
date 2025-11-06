@@ -2,7 +2,7 @@
  * Trading Executor Service - SOLUTION
  */
 
-package session16.assignment;
+package session16.assignment04executorservice.src.main.java.com.kulkultech.threads;
 
 import java.util.List;
 import java.util.concurrent.*;
