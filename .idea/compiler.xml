@@ -6,8 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="assignment01databaseconnection" />
+        <module name="assignment-01-database-connection" />
+        <module name="assignment-02-crud-operations" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="assignment01databaseconnection" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

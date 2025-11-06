@@ -13,5 +13,6 @@
 
     <modules>
         <module>session17/assignment-01-database-connection</module>
+        <module>session17/assignment-02-crud-operations</module>
     </modules>
 </project>
