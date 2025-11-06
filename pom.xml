@@ -15,5 +15,6 @@
         <module>session17/assignment-01-database-connection</module>
         <module>session17/assignment-02-crud-operations</module>
         <module>session17/assignment-03-prepared-statement</module>
+        <module>session17/assignment-04-transactions</module>
     </modules>
 </project>
