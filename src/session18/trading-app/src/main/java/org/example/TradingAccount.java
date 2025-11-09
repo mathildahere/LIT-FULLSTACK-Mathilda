@@ -1,6 +1,6 @@
 package org.example;
 
-import javax.persistence.*;  // Note: JPA 3.0+ uses jakarta.persistence.*
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
