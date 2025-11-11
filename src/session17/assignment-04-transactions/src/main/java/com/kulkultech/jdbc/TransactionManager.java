@@ -1,57 +1,69 @@
-/**
- * Transaction Manager - SOLUTION
+package com.kulkultech.jdbc; /**
+ * Transaction Manager - JDBC Transaction Management
+ * 
+ * Challenge: Implement transaction management with commit and rollback
+ * 
+ * Your task: Use Connection transaction methods to ensure ACID properties
+ * 
+ * Concepts covered:
+ * - setAutoCommit(false)
+ * - commit()
+ * - rollback()
+ * - Savepoints
+ * - Transaction isolation levels
  */
-import java.sql.*;
-import java.util.Map;
 
-public class TransactionManagerSolution {
+import java.sql.*;
+import java.util.*;
+
+public class TransactionManager {
     private final String dbUrl;
     private final String username;
     private final String password;
     
-    public TransactionManagerSolution(String dbUrl, String username, String password) {
+    public TransactionManager(String dbUrl, String username, String password) {
         this.dbUrl = dbUrl;
         this.username = username;
         this.password = password;
     }
     
+    /**
+     * Transfer funds between accounts atomically
+     */
     public boolean transferFunds(int fromAccountId, int toAccountId, double amount) {
-        Connection conn = null;
+        Connection connection = null;
         try {
-            conn = getConnection();
-            conn.setAutoCommit(false);
-            
-            // Subtract from source account
-            try (PreparedStatement stmt = conn.prepareStatement(
+            connection = getConnection();
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement statement = connection.prepareStatement(
                     "UPDATE accounts SET balance = balance - ? WHERE id = ?")) {
-                stmt.setDouble(1, amount);
-                stmt.setInt(2, fromAccountId);
-                int rowsAffected = stmt.executeUpdate();
+                statement.setDouble(1, amount);
+                statement.setInt(2, fromAccountId);
+                int rowsAffected = statement.executeUpdate();
                 if (rowsAffected == 0) {
-                    conn.rollback();
+                    connection.rollback();
                     return false;
                 }
             }
-            
-            // Add to destination account
-            try (PreparedStatement stmt = conn.prepareStatement(
+
+            try (PreparedStatement statement = connection.prepareStatement(
                     "UPDATE accounts SET balance = balance + ? WHERE id = ?")) {
-                stmt.setDouble(1, amount);
-                stmt.setInt(2, toAccountId);
-                int rowsAffected = stmt.executeUpdate();
+                statement.setDouble(1, amount);
+                statement.setInt(2, toAccountId);
+                int rowsAffected = statement.executeUpdate();
                 if (rowsAffected == 0) {
-                    conn.rollback();
+                    connection.rollback();
                     return false;
                 }
             }
-            
-            conn.commit();
+
+            connection.commit();
             return true;
-            
         } catch (SQLException e) {
-            if (conn != null) {
+            if (connection != null) {
                 try {
-                    conn.rollback();
+                    connection.rollback();
                 } catch (SQLException rollbackEx) {
                     System.err.println("Rollback failed: " + rollbackEx.getMessage());
                 }
@@ -59,50 +71,53 @@ public class TransactionManagerSolution {
             System.err.println("Transfer failed: " + e.getMessage());
             return false;
         } finally {
-            if (conn != null) {
+            if (connection != null) {
                 try {
-                    conn.setAutoCommit(true);
-                    conn.close();
+                    connection.setAutoCommit(true);
+                    connection.close();
                 } catch (SQLException e) {
                     System.err.println("Error closing connection: " + e.getMessage());
                 }
             }
         }
     }
-    
-    public boolean updateMultiplePrices(Map<String, Double> priceUpdates) {
+
+    /**
+     * Batch update with transaction
+     */
+    public boolean updateMultiplePrices(java.util.Map<String, Double> priceUpdates) {
         String sql = "UPDATE positions SET current_price = ? WHERE stock_symbol = ?";
-        
-        Connection conn = null;
+
+        Connection connection = null;
         try {
-            conn = getConnection();
-            conn.setAutoCommit(false);
-            
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            connection = getConnection();
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 for (Map.Entry<String, Double> entry : priceUpdates.entrySet()) {
-                    stmt.setDouble(1, entry.getValue());
-                    stmt.setString(2, entry.getKey());
-                    stmt.addBatch();
+                    statement.setDouble(1, entry.getValue());
+                    statement.setString(2, entry.getKey());
+                    statement.addBatch();
                 }
-                
-                int[] results = stmt.executeBatch();
-                
+
+                int[] results = statement.executeBatch();
+
                 // Check if all updates succeeded
                 for (int result : results) {
                     if (result == Statement.EXECUTE_FAILED) {
-                        conn.rollback();
+                        connection.rollback();
                         return false;
                     }
                 }
-                
-                conn.commit();
+
+                connection.commit();
                 return true;
             }
-            
+
         } catch (SQLException e) {
-            if (conn != null) {
+            if (connection != null) {
                 try {
-                    conn.rollback();
+                    connection.rollback();
                 } catch (SQLException rollbackEx) {
                     System.err.println("Rollback failed: " + rollbackEx.getMessage());
                 }
@@ -110,10 +125,10 @@ public class TransactionManagerSolution {
             System.err.println("Batch update failed: " + e.getMessage());
             return false;
         } finally {
-            if (conn != null) {
+            if (connection != null) {
                 try {
-                    conn.setAutoCommit(true);
-                    conn.close();
+                    connection.setAutoCommit(true);
+                    connection.close();
                 } catch (SQLException e) {
                     System.err.println("Error closing connection: " + e.getMessage());
                 }
@@ -121,43 +136,43 @@ public class TransactionManagerSolution {
         }
     }
     
+    /**
+     * Transaction with savepoint
+     */
     public boolean processTradeWithSavepoint(int tradeId, double newPrice) {
-        Connection conn = null;
+        Connection connection = null;
         Savepoint savepoint = null;
-        
+
         try {
-            conn = getConnection();
-            conn.setAutoCommit(false);
-            
-            // Create savepoint
-            savepoint = conn.setSavepoint("before_update");
-            
-            // Update trade price
-            try (PreparedStatement stmt = conn.prepareStatement(
+            connection = getConnection();
+            connection.setAutoCommit(false);
+
+            savepoint = connection.setSavepoint("before_update");
+
+            try (PreparedStatement statement = connection.prepareStatement(
                     "UPDATE trades SET price = ? WHERE id = ?")) {
-                stmt.setDouble(1, newPrice);
-                stmt.setInt(2, tradeId);
-                int rowsAffected = stmt.executeUpdate();
-                
+                statement.setDouble(1, newPrice);
+                statement.setInt(2, tradeId);
+                int rowsAffected = statement.executeUpdate();
+
                 if (rowsAffected == 0) {
-                    conn.rollback(savepoint);
+                    connection.rollback(savepoint);
                     return false;
                 }
             }
-            
-            // Validation: price must be positive
+
             if (newPrice <= 0) {
-                conn.rollback(savepoint);
+                connection.rollback(savepoint);
                 return false;
             }
-            
-            conn.commit();
+
+            connection.commit();
             return true;
-            
+
         } catch (SQLException e) {
-            if (conn != null && savepoint != null) {
+            if (connection != null && savepoint != null) {
                 try {
-                    conn.rollback(savepoint);
+                    connection.rollback(savepoint);
                 } catch (SQLException rollbackEx) {
                     System.err.println("Rollback to savepoint failed: " + rollbackEx.getMessage());
                 }
@@ -165,10 +180,10 @@ public class TransactionManagerSolution {
             System.err.println("Process trade failed: " + e.getMessage());
             return false;
         } finally {
-            if (conn != null) {
+            if (connection != null) {
                 try {
-                    conn.setAutoCommit(true);
-                    conn.close();
+                    connection.setAutoCommit(true);
+                    connection.close();
                 } catch (SQLException e) {
                     System.err.println("Error closing connection: " + e.getMessage());
                 }
