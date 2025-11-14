@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.kulkultech.restapi.PortfolioControllerTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.965 s - in com.kulkultech.restapi.PortfolioControllerTest
